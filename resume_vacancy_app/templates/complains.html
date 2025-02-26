@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}complains{% endblock %}
+{% block name %}Что же вам не понравилось в этой вакансии?{% endblock %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ complain_form.text.label }}
+        </div>
+        <div>
+             {{ complain_form.text }}
+        </div>
+        <div>
+            <input type="submit" value="Отправить жалобу">
+        </div>
+    </form>
+{% endblock %}

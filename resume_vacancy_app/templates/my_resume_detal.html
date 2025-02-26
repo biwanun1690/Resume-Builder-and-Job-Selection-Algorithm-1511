@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}my resume{% endblock %}
+{% block name %}Моё Резюме{% endblock %}
+{% block content %}
+    <div>
+        <h5>ФИО: {{ my_resume.fullname }}</h5>
+        <h5>E-mail: {{ my_resume.email }}</h5>
+        <h5>Телефон: {{ my_resume.phone }}</h5>
+        <h5>Учебное заведение: {{ my_resume.education }}</h5>
+        <h5>Специализация: {{ my_resume.branch }}</h5>
+        <h5>Опыт работы: {{ my_resume.experience }}</h5>
+        <h5>Навыки: {{ my_resume.skills }}</h5>
+        <form action="{% url 'delete_resume' my_resume.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить резюме">
+        </form>
+        <a href="{% url 'recomendations' my_resume.id %}" class="vote-button">Рекомендации</a>
+        <a href="{% url 'edit_resume' my_resume.id %}" class="vote-button">Редактировать</a>
+        <a href="{% url 'need_vacancies' my_resume.id %}" class="vote-button">Подходящие вакансии</a>
+    </div>
+{% endblock %}
+
+

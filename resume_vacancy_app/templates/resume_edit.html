@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}edit resume{% endblock %}
+{% block name %}Редактировать резюме{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить изменения</button>
+    </form>
+{% endblock %}

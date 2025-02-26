@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}favorite vacancies{% endblock %}
+{% block name %}Избранные Вакансии{% endblock %}
+{% block content %}
+    {% for val in favorites %}
+        <p><a href="{% url 'vacancy' val.vacancy.id %}" class="vote-button">Вакансия {{ forloop.counter }} - {{ val.vacancy.name }}</a></p>
+    {% empty %}
+    <div>
+        <p>No favorites vacancies entries found.</p>
+    </div>
+    {% endfor %}
+{% endblock %}

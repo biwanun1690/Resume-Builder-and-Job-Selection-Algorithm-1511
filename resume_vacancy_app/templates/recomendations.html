@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}recomendations{% endblock %}
+{% block name %}Рекомендации других работников{% endblock %}
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                {{ recomendation_form.text.label }}
+            </div>
+            <div>
+                 {{ recomendation_form.text }}
+            </div>
+            <div>
+                <input type="submit" value="Отправить рекомендацию">
+            </div>
+        </form>
+    </div>
+    <div>
+        <table border="1px">
+            <tr>
+                <th>Рекомендация</th>
+                <th>Пользователь</th>
+            </tr>
+            {% for item in recomendation_history %}
+            <tr>
+                <td> {{ item.text }}</td>
+                <td> {{ item.author.username }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

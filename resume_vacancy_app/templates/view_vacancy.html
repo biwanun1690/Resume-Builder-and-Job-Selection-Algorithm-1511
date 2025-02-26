@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}vacancy{% endblock %}
+{% block name %}{{ vacancy.name }}{% endblock %}
+{% block content %}
+    <div>
+        <h5>Город: {{ vacancy.area }}</h5>
+        <h5>Зарплата: {{ vacancy.salary }}</h5>
+        <h5>Адресс: {{ vacancy.address }}</h5>
+        <h5>Компания: {{ vacancy.employer }}</h5>
+        <h5>Требования: {{ vacancy.requirement }}</h5>
+        <h5>Обязанности: {{ vacancy.responsibility }}</h5>
+        <h5>График: {{ vacancy.schedule }}</h5>
+        <h5>Рабочие дни: {{ vacancy.working_days }}</h5>
+        <h5>Рабочие часы: {{ vacancy.working_hours }}</h5>
+        <h5>График работы по дням: {{ vacancy.work_schedule_by_days }}</h5>
+        <h5>Ночные смены: {{ vacancy.night_shifts }}</h5>
+        <h5>Профессии: {{ vacancy.professional_roles }}</h5>
+        <h5>Опыт работы: {{ vacancy.experience }}</h5>
+        <h5>Тип занятности: {{ vacancy.employment }}</h5>
+        {% if is_favorite %}
+            <form action="{% url 'toggle_favorite' vacancy.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Удалить из избранных">
+            </form>
+        {% else %}
+            <form action="{% url 'toggle_favorite' vacancy.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Добавить в избранные">
+            </form>
+        {% endif %}
+    </div>
+    <p><a href="{% url 'comments' vacancy.id %}" class="vote-button">Комментарии</a></p>
+    <p><a href="{% url 'complains' vacancy.id %}" class="vote-button">Написать жалобу</a></p>
+{% endblock %}

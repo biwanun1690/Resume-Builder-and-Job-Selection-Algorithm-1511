@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}resumes{% endblock %}
+{% block name %}Список Резюме{% endblock %}
+{% block content %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>E-mail</th>
+                <th>Телефон</th>
+                <th>Учебное заведение</th>
+                <th>Специализация</th>
+                <th>Опыт работы</th>
+                <th>Навыки</th>
+                <th>Рекомендации</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for val in resumes %}
+            <tr>
+                <td>{{ val.fullname }}</td>
+                <td>{{ val.email }}</td>
+                <td>{{ val.phone }}</td>
+                <td>{{ val.education }}</td>
+                <td>{{ val.branch }}</td>
+                <td>{{ val.experience }}</td>
+                <td>{{ val.skills }}</td>
+                <td><a href="{% url 'recomendations' val.id %}" class="vote-button">Рекомендации</a></td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No resumes entries found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

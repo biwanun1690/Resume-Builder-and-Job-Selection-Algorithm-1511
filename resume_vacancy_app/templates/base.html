@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Мой сайт{% endblock %}</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрирование по горизонтали */
+            height: 100vh; /* Высота на весь экран */
+            margin: 0; /* Убираем отступы у body */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column; /* Элементы по вертикали */
+            align-items: center; /* Центрирование элементов внутри формы */
+            margin-bottom: 20px; /* Отступ снизу для формы */
+        }
+
+        input[type="text"] {
+            margin: 10px 0; /* Отступы сверху и снизу для поля ввода */
+            padding: 5px; /* Внутренние отступы для удобства */
+            width: 300px; /* Фиксированная ширина поля ввода */
+        }
+
+        input[type="submit"] {
+            padding: 5px 15px; /* Внутренние отступы для кнопки */
+        }
+
+        table {
+            border-collapse: collapse; /* Убираем двойные границы */
+            margin-top: 20px; /* Отступ сверху для таблицы */
+        }
+
+        th, td {
+            padding: 10px; /* Внутренние отступы для ячеек таблицы */
+            text-align: left; /* Выравнивание текста в ячейках */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Цвет фона для заголовков */
+        }
+
+        table, th, td {
+            border: 1px solid black; /* Граница для таблицы и ячеек */
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="templates/css/bootstrap.min.css" rel="stylesheet">
+    <link href="templates/css/style.css" rel="stylesheet">
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>{% block name %}Мой сайт{% endblock %}</h1>
+    {% block content %}
+        Здесь написан код, который будет переопределён во всех наследных шаблонах
+    {% endblock %}
+    <footer>
+        <p>Проект  1511</p>
+        <p>Разработчики - Куприянова Анна 10 Л, Ивашина Кристина 10Л</p>
+    </footer>
+    {% load static %}
+    <script src="templates/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

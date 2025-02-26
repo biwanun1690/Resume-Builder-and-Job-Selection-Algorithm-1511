@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}my resumes{% endblock %}
+{% block name %}Мои Резюме{% endblock %}
+{% block content %}
+    {% for val in my_resumes %}
+        <p><a href="{% url 'my_resume_detal' val.id %}" class="vote-button">Резюме {{ forloop.counter }}</a></p>
+    {% empty %}
+    <div>
+        <p>No resumes entries found.</p>
+    </div>
+    {% endfor %}
+{% endblock %}
+

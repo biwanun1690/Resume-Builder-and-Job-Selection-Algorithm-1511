@@ -1,0 +1,21 @@
+<!-- create_resume.html -->
+{% extends 'base.html' %}
+
+{% block title %}create resume{% endblock %}
+{% block name %}Создать резюме{% endblock %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <h2>Личная информация</h2>
+        {{ form1.as_p }}
+        <h2>Образование</h2>
+        {{ form2.as_p }}
+        <h2>Работа</h2>
+        {{ form3.as_p }}
+        <h2>Опыт работы</h2>
+        {{ form4.as_p }}
+        <h2>Навыки</h2>
+        {{ form5.as_p }}
+        <button type="submit">Отправить</button>
+    </form>
+{% endblock %}

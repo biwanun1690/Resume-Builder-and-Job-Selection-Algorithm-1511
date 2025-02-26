@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}comments{% endblock %}
+{% block name %}Здесь можете написать комментарий{% endblock %}
+{% block content %}
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                {{ comment_form.text.label }}
+            </div>
+            <div>
+                 {{ comment_form.text }}
+            </div>
+            <div>
+                <input type="submit" value="Отправить комментарий">
+            </div>
+        </form>
+    </div>
+    <div>
+        <table border="1px">
+            <tr>
+                <th>Комментарий</th>
+                <th>Дата</th>
+                <th>Пользователь</th>
+            </tr>
+            {% for item in comment_history %}
+            <tr>
+                <td> {{ item.text }}</td>
+                <td> {{ item.created_at }}</td>
+                <td> {{ item.author.username }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
