@@ -1,1 +1,17 @@
 Django==5.1.3
+requests
+pandas
+numpy
+random
+re
+nltk
+translate
+googletrans
+textblob
+textblob.download_corpora
+gensim
+pymorphy2
+pymystem3
+googletrans
+asyncio
+sqlalchemy
