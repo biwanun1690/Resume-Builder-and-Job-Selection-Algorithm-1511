@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}login{% endblock %}
+{% block name %}Авторизация{% endblock %}
+{% block content %}
+    <body class="container-col">
+        <section class="container-col border">
+            <form method="post">
+                {% csrf_token %}
+                {{ form }}
+                <input type="submit" value="Войти">
+            </form>
+
+            <button class="forgot-password-button">Забыли Пароль?</button>
+            <p class="password-info-text"></p>
+        </section>
+
+        {% load static %}
+        <script src="{% static 'js/log_in_page_script.js' %}"></script>
+    </body>
+{% endblock %}
+
